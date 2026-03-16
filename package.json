@@ -1,7 +1,7 @@
 {
   "name": "react-example",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "electron/main.cjs",
   "scripts": {
@@ -34,9 +34,7 @@
     },
     "publish": [
       {
-        "provider": "github",
-        "owner": "Tri-AD",
-        "repo": "official-data"
+        "provider": "github"
       }
     ]
   },

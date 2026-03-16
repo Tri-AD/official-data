@@ -73,11 +73,11 @@ export function Workspace({ role }: { role: string | null }) {
         </div>
       </div>
 
-      <div className="flex-1 flex flex-col p-4 md:p-6 relative overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#00f3ff]/30 [&::-webkit-scrollbar-thumb]:rounded-full">
+      <div className="flex-1 flex flex-col p-4 md:p-6 relative overflow-hidden">
         {/* Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_60%,transparent_100%)] pointer-events-none fixed" />
 
-        <div className="relative z-10 flex-1 flex flex-col h-full max-w-7xl mx-auto w-full min-h-[800px]">
+        <div className="relative z-10 flex-1 flex flex-col h-full max-w-7xl mx-auto w-full min-h-0">
           <header className="mb-8 flex items-end justify-between border-b border-white/10 pb-4">
             <div>
               <h2 className="font-display text-3xl tracking-[0.2em] text-white/90 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]">WORKSPACE</h2>

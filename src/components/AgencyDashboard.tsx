@@ -321,8 +321,8 @@ function Inbox({ editors }: { editors: any[] }) {
   }
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="p-4 border-b border-white/10 flex justify-between items-center">
+    <div className="flex-1 flex flex-col h-full overflow-hidden">
+      <div className="p-4 border-b border-white/10 flex justify-between items-center shrink-0">
         <span className="font-mono text-xs text-[#ff003c] tracking-widest">CHAT: {selectedEditor.displayName || selectedEditor.email}</span>
         <button onClick={() => setSelectedEditor(null)} className="font-mono text-[10px] text-white/50 hover:text-white">BACK TO INBOX</button>
       </div>
@@ -339,7 +339,7 @@ function Inbox({ editors }: { editors: any[] }) {
           );
         })}
       </div>
-      <form onSubmit={handleSend} className="p-4 border-t border-white/10 flex gap-2">
+      <form onSubmit={handleSend} className="p-4 border-t border-white/10 flex gap-2 shrink-0 bg-black/40">
         <input 
           type="text" 
           value={newMessage}
@@ -384,7 +384,7 @@ function AgencyGroupChat() {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex-1 flex flex-col h-full overflow-hidden">
       <div className="flex-1 overflow-y-auto p-4 space-y-4 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#ff003c]/30 [&::-webkit-scrollbar-thumb]:rounded-full">
         {messages.map(msg => {
           const isMe = msg.senderId === auth.currentUser?.uid;

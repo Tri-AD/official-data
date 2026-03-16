@@ -217,7 +217,7 @@ function ManagementChat() {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex-1 flex flex-col h-full overflow-hidden">
       <div className="flex-1 overflow-y-auto p-4 space-y-4 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#00f3ff]/30 [&::-webkit-scrollbar-thumb]:rounded-full">
         {messages.map(msg => {
           const isMe = msg.senderId === auth.currentUser?.uid;
@@ -231,7 +231,7 @@ function ManagementChat() {
           );
         })}
       </div>
-      <form onSubmit={handleSend} className="p-4 border-t border-white/10 flex gap-2">
+      <form onSubmit={handleSend} className="p-4 border-t border-white/10 flex gap-2 shrink-0 bg-black/40">
         <input 
           type="text" 
           value={newMessage}
@@ -310,7 +310,7 @@ function GroupChat({ userData }: { userData: any }) {
   }
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex-1 flex flex-col h-full overflow-hidden">
       <div className="flex-1 overflow-y-auto p-4 space-y-4 [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#00f3ff]/30 [&::-webkit-scrollbar-thumb]:rounded-full">
         {messages.map(msg => {
           const isMe = msg.senderId === auth.currentUser?.uid;
@@ -325,7 +325,7 @@ function GroupChat({ userData }: { userData: any }) {
           );
         })}
       </div>
-      <form onSubmit={handleSend} className="p-4 border-t border-white/10 flex gap-2">
+      <form onSubmit={handleSend} className="p-4 border-t border-white/10 flex gap-2 shrink-0 bg-black/40">
         <input 
           type="text" 
           value={newMessage}

@@ -17,6 +17,7 @@ export function LoginScreen({ onLogin }: { onLogin: (role: string) => void }) {
   const [passkey, setPasskey] = useState('');
 
   // Editor State
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('');
   const [password, setPassword] = useState('');
@@ -83,6 +84,7 @@ export function LoginScreen({ onLogin }: { onLogin: (role: string) => void }) {
       try {
         await setDoc(doc(db, 'users', userCred.user.uid), {
           email,
+          displayName: name,
           country,
           role: 'editor',
           agencyName: 'triad editing agency',
@@ -145,6 +147,7 @@ export function LoginScreen({ onLogin }: { onLogin: (role: string) => void }) {
     setState(newState);
     setError('');
     setPasskey('');
+    setName('');
     setEmail('');
     setCountry('');
     setPassword('');
@@ -280,6 +283,17 @@ export function LoginScreen({ onLogin }: { onLogin: (role: string) => void }) {
                 <h2 className="font-display text-lg tracking-[0.2em] text-center mb-6 text-[#00f3ff]">CREATE ACCOUNT</h2>
                 
                 <form onSubmit={handleEditorSignup} className="flex flex-col gap-4">
+                  <div className="relative">
+                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
+                    <input
+                      type="text"
+                      placeholder="FULL NAME"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      className="w-full bg-black/50 border border-white/10 rounded-xl py-3 pl-12 pr-4 font-mono text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#00f3ff]/50 focus:ring-1 focus:ring-[#00f3ff]/50 transition-all"
+                      required
+                    />
+                  </div>
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
                     <input
