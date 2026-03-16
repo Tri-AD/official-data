@@ -1,0 +1,83 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the Triad Workspace (Editor or Agency)",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["editor", "agency"] },
+        "country": { "type": "string" },
+        "agencyName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "displayName": { "type": "string" },
+        "totalEarned": { "type": "number" },
+        "currentMonthEarned": { "type": "number" }
+      },
+      "required": ["email", "role", "agencyName", "createdAt"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "A project assigned to an editor",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "assets": { "type": "string" },
+        "voiceOver": { "type": "string" },
+        "script": { "type": "string" },
+        "amount": { "type": "number" },
+        "minutes": { "type": "number" },
+        "editorId": { "type": "string" },
+        "deadline": { "type": "string", "format": "date-time" },
+        "additionalMessage": { "type": "string" },
+        "status": { "type": "string", "enum": ["assigned", "submitted", "changes_requested", "completed"] },
+        "submissionLink": { "type": "string" },
+        "feedback": { "type": "string" },
+        "isPaid": { "type": "boolean" },
+        "progressMinutes": { "type": "number" },
+        "createdBy": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "amount", "minutes", "editorId", "deadline", "status", "createdBy", "createdAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "type": "object",
+      "properties": {
+        "senderId": { "type": "string" },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["senderId", "text", "timestamp"]
+    },
+    "GroupMessage": {
+      "title": "GroupMessage",
+      "type": "object",
+      "properties": {
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["senderId", "senderName", "text", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Stores user profiles"
+    },
+    "/projects/{projectId}": {
+      "schema": { "$ref": "#/entities/Project" },
+      "description": "Stores projects"
+    },
+    "/chats/{editorId}/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/ChatMessage" },
+      "description": "1-on-1 chat between editor and agency"
+    },
+    "/group_chat/{messageId}": {
+      "schema": { "$ref": "#/entities/GroupMessage" },
+      "description": "Group chat for all users"
+    }
+  }
+}
